@@ -47,6 +47,7 @@ node default {
     ensure => file,
     group => '0',
     mode => '0644',
-    owner => 'root'
+    owner => 'root',
+    content => 'arrrrrrrrrrghhhhh'
   }
 }
