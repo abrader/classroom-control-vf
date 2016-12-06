@@ -50,4 +50,9 @@ node default {
     owner => 'root',
     content => 'arrrrrrrrrrghhhhh'
   }
+  
+  host {'testing.puppetlabs.vm':
+    ensure: present,
+    ip: '127.0.0.1'
+  }
 }
