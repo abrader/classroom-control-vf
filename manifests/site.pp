@@ -46,7 +46,7 @@ node default {
   
   file { '/etc/motd':
     ensure => file,
-    content => 'managed by puppet things\n',
+    content => "managed by puppet things\n",
     mode => '0644',
     owner => 'root',
     group => 'root',
