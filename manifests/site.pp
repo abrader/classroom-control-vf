@@ -48,6 +48,6 @@ node default {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => "blah",
+    content => "this is a test\n",
   }
 }
