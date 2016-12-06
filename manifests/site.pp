@@ -46,11 +46,11 @@ node default {
   include role::classroom
  
   file { '/etc/motd':
-  ensure  => file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
-  content => "Hey, Puppet is fun!\n",
-}
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => "I've learned to add files to all nodes!\n",
+  }
 }
 
