@@ -47,6 +47,7 @@ node default {
     owner    => 'root',
     group    => 'root',
     mode     => '0664',
+    path     => '/etc/motd',
     content  => 'Falafel is yummy',
   }
 }
