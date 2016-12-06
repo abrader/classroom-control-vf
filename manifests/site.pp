@@ -43,5 +43,14 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Welcome from ${fqdn}" : }
+  
+  file { '/etc/motd' :
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => "I learned all kinds of new things in my Puppet class today!\n",
+  }
+  
   include role::classroom
 }
