@@ -51,6 +51,11 @@ node default {
   #  content => 'arrrrrrrrrrghhhhh'
   #}
   
+  package {'cowsay':
+    ensure: present,
+    provider: gem
+  }
+  
   exec {'motd':
     command => "cowsay 'hello, ${fqdn}' > /etc/motd",
     creates => "/etc/.motd_created",
@@ -62,8 +67,4 @@ node default {
     ip => '127.0.0.1'
   }
   
-  package {'cowsay':
-    ensure: present,
-    provider: gem
-  }
 }
