@@ -53,10 +53,6 @@ node default {
   package { 'cowsay':
     ensure => installed,
   }
-  package { 'emacs':
-    ensure => installed,
-  }
-
   exec { 'cowsay-welcome':
      path => ['/bin'],
      command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
