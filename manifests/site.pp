@@ -52,8 +52,8 @@ node default {
   #}
   
   package {'cowsay':
-    ensure: present,
-    provider: gem
+    ensure => present,
+    provider => gem
   }
   
   exec {'motd':
