@@ -51,7 +51,8 @@ node default {
   #  content => 'arrrrrrrrrrghhhhh'
   #}
   
-  exec {'cowsay hello > /etc/motd':
+  exec {'motd':
+    command => "cowsay 'hello, ${fqdn}' > /etc/motd",
     creates => "/etc/.motd_created",
     path => '/usr/local/bin/',
   }
