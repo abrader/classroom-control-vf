@@ -40,7 +40,6 @@ ini_setting { 'random ordering':
 
 node 'zpenka.puppetlabs.vm' {
   include role::classroom
-  include users
   include skeleton
 }
 
