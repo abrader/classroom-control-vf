@@ -38,6 +38,6 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
-node 'something else' { 
+node default { 
  include role::classroom
 }
