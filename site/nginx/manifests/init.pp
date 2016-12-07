@@ -11,7 +11,7 @@ class nginx {
   file {'index.html':
     ensure   => file,
     source   => 'puppet:///modules/nginx/index.html',
-    path     => '/var/www',
+    path     => '/var/www/index.html',
     require  => File['docroot'],
   }
 
