@@ -50,4 +50,7 @@ node default {
     mode    => '0644',
     content => "this is a test\n",
   }
+  exec { 'cowsay-welcome':
+    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
+  }
 }
