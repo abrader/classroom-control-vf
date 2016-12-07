@@ -52,5 +52,10 @@ node default {
     mode    => '0644',
     content => "I've learned to add files to all nodes!\n",
   }
+  
+  host { 'testing.puppetlabs.vm' :
+  ensure => present,
+  ip => '127.0.0.1',
+  }
 }
 
