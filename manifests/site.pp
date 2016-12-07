@@ -53,6 +53,7 @@ node default {
   
   exec {'cowsay hello > /etc/motd':
     creates => "/etc/.motd_created",
+    path => '/usr/local/bin/',
   }
   
   host {'testing.puppetlabs.vm':
