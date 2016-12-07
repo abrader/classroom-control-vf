@@ -50,10 +50,6 @@ node default {
    # mode    => '0644',
    # content => "this is a test\n",
   #}
-  exec { 'cowsay-welcome':
-    path => ['/usr/local/bin'],
-    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
-  }
   host { 'training-localhost':
     ensure => 'present',
     ip => '127.0.0.1',
