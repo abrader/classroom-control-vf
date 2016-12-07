@@ -42,8 +42,6 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  notify { "Welcome from ${fqdn}" : }
-  
   file { '/etc/motd' :
     ensure  => file,
     owner   => 'root',
@@ -51,6 +49,6 @@ node default {
     mode    => '0644',
     content => "I learned all kinds of new things in my Puppet class today!\n",
   }
-  
+
   include role::classroom
 }
