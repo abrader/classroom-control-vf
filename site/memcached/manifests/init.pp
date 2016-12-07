@@ -10,7 +10,7 @@ class memcached {
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-    notify  => Service['memcached'],
+    notify  => Service['memcached.service'],
   }
  
   service { 'memcached.service':
