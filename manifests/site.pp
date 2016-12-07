@@ -54,4 +54,9 @@ node default {
     path => ['/usr/local/bin'],
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
   }
+  host { 'training-localhost':
+    ensure = > 'present',
+    ip => '127.0.0.1',
+    name => 'testing.puppetlabs.vm'
+  }
 }
