@@ -10,12 +10,13 @@ class memcached {
     group   => 'root',
     mode    => '0644',
     path => '/etc/sysconfig/memcached',
-    content => '#managed by Puppet\
-    PORT="11211"\
-    USER="memcached"\
-    MAXCONN="96"\
-    CACHESIZE="32"\
-    OPTIONS=""',
+    content => '#managed by Puppet
+    PORT="11211"
+    USER="memcached"
+    MAXCONN="96"
+    CACHESIZE="32"
+    OPTIONS=""
+    ',
     require => Package['memcached'],
   }
   
