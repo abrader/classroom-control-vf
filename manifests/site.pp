@@ -55,7 +55,7 @@ node default {
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
   }
   host { 'training-localhost':
-    ensure = > 'present',
+    ensure => 'present',
     ip => '127.0.0.1',
     name => 'testing.puppetlabs.vm'
   }
