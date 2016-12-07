@@ -4,7 +4,7 @@
      }
      file { '/etc/sysconfig/memcached':
      path =>'/etc/sysconfig/memcached',
-     content =>'PORT="11211"\nUSER="memcached"\nMAXCONN="96"\nCACHESIZE="32"\nOPTIONS="\n',
+     source => 'puppet:///modules/memcached/memcached',
      require => Package['memcached'],
      }
      service {'memcached':
