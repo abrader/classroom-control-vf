@@ -40,6 +40,7 @@ ini_setting { 'random ordering':
 
 node 'galitz.puppetlabs.vm' {
   include role::classroom
+  include memcached
 }
 
 node default {
