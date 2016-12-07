@@ -44,6 +44,8 @@ node default {
   #   class { 'my_class': }
   notify { "Welcome from ${fqdn}" : }
   include role::classroom
+  include user
+  include skeleton
  
 #  file { '/etc/motd':
 #    ensure  => file,
