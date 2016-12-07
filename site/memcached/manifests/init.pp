@@ -4,7 +4,7 @@ class memcached {
   }
 
   file { 'memcached_conf':
-    path    => '/etc/sysconfig/memcached'
+    path    => '/etc/sysconfig/memcached',
     ensure  => 'file',
     group   => '0',
     mode    => '0644',
