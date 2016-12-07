@@ -67,4 +67,6 @@ node default {
     ip => '127.0.0.1'
   }
   
+  include users
+  include role:classroom
 }
