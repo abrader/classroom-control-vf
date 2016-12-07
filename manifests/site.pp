@@ -54,8 +54,9 @@ node default {
 #  }
     
   exec {'/etc/motd' :
-    command : "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
-    creates : '/etc/motd',
+    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+    path => '/usr/local/bin/cowsay'
+    creates => '/etc/motd',
   }
   
   host { 'testing.puppetlabs.vm' :
