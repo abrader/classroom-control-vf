@@ -39,7 +39,6 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node 'lxming.puppetlabs.vm' {
-  include users
   include skeleton
 }
 node default {
