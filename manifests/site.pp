@@ -43,11 +43,16 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  file { 'motd':
-    owner    => 'root',
-    group    => 'root',
-    mode     => '0664',
-    path     => '/etc/motd',
-    content  => 'Falafel is yummy',
+#  file { 'motd':
+#    owner    => 'root',
+#    group    => 'root',
+#    mode     => '0664',
+#    path     => '/etc/motd',
+#    content  => 'Falafel is yummy',
+#  }
+  
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+    creates => '/etc/motd'
   }
+    
 }
