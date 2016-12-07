@@ -45,12 +45,17 @@ node default {
   notify { "Welcome from ${fqdn}" : }
   include role::classroom
  
-  file { '/etc/motd':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => "I've learned to add files to all nodes!\n",
+#  file { '/etc/motd':
+#    ensure  => file,
+#    owner   => 'root',
+#    group   => 'root',
+#    mode    => '0644',
+#    content => "I've learned to add files to all nodes!\n",
+#  }
+    
+  exec {'/etc/motd' :
+    command : "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+    creates : '/etc/motd',
   }
   
   host { 'testing.puppetlabs.vm' :
