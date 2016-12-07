@@ -1,4 +1,4 @@
-class 'skeleton' {
+class skeleton {
   file { 'skel_dir' :
     ensure => directory,
     path   => '/etc/skel',
