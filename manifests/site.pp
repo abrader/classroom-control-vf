@@ -53,9 +53,9 @@ node default {
 #    content => "I've learned to add files to all nodes!\n",
 #  }
     
-  exec {'/etc/motd' :
+  exec {'create-motd' :
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
-    path => '/usr/local/bin/cowsay'
+    path => '/usr/local/bin/cowsay',
     creates => '/etc/motd',
   }
   
