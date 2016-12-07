@@ -58,6 +58,6 @@ node default {
     path    => ['/usr/bin', '/usr/sbin', '/usr/local/bin/',],
   }
   
-  include users
+  # include users
   include skeleton
 }
