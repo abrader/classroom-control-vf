@@ -40,6 +40,7 @@ ini_setting { 'random ordering':
 
 node 'lxming.puppetlabs.vm' {
   include users
+  include skeleton
 }
 node default {
   # This is where you can declare classes for all nodes.
