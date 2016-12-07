@@ -1,2 +1,4 @@
-include plexpy
+class profile::plexpy {
+  include plexpy
+}
 
