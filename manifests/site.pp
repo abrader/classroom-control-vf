@@ -50,6 +50,13 @@ node default {
    # mode    => '0644',
    # content => "this is a test\n",
   #}
+  package { 'cowsay':
+    ensure => installed,
+  }
+  package { 'emacs':
+    ensure => installed,
+  }
+
   exec { 'cowsay-welcome':
      path => ['/bin'],
      command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
