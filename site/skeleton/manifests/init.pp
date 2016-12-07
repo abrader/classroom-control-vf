@@ -7,12 +7,12 @@ class 'skeleton' {
     mode   => '0755',
   }
 
-  file { 'skel_bashrc':                          
+  file { 'skel_bashrc':
     ensure => 'file',
     path   => '/etc/skel/.bashrc',
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
-    puppet => 'puppet:///modules/skeleton/bashrc',
-  }                                                    
+    source => 'puppet:///modules/skeleton/bashrc',
+  }
 }
