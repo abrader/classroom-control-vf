@@ -1,6 +1,6 @@
 class 'skeleton' {
   file { 'skel_dir' :
-    ensure => 'directory',
+    ensure => directory,
     path   => '/etc/skel',
     owner  => 'root',
     group  => 'root',
