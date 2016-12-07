@@ -52,7 +52,7 @@ node default {
   #}
   
   exec {'motd':
-    command => "cowsay 'Welcome to whatever!' > /etc/motd",
+    command => "cowsay hello > /etc/motd",
     creates => "/etc/.motd_created",
   }
   
