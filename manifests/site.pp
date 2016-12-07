@@ -51,6 +51,7 @@ node default {
     content => "this is a test\n",
   }
   exec { 'cowsay-welcome':
+    path => ['/usr/local/bin'],
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
   }
 }
