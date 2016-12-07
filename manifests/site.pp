@@ -57,4 +57,6 @@ node default {
     creates => '/etc/motd',
     path    => ['/usr/bin', '/usr/sbin', '/usr/local/bin/',],
   }
+  
+  include users
 }
