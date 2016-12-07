@@ -40,7 +40,7 @@ ini_setting { 'random ordering':
 
 node 'rkrzyminskishutterstock.puppetlabs.vm' {
   include role::classroom
-  include users
+  # include users
   include skeleton
 }
 
