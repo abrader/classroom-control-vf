@@ -38,35 +38,6 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
-node 'something else' {
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
-  include role::classroom
-  #file { '/etc/motd': 
-  #  ensure => file,
-  #  group => '0',
-  #  mode => '0644',
-  #  owner => 'root',
-  #  content => 'arrrrrrrrrrghhhhh'
-  #}
-  
-  package {'cowsay':
-    ensure => present,
-    provider => gem
-  }
-  
-  exec {'motd':
-    command => "cowsay 'hello, ${fqdn}' > /etc/motd",
-    creates => "/etc/motd",
-    path => '/usr/local/bin/',
-  }
-  
-  host {'testing.puppetlabs.vm':
-    ensure => present,
-    ip => '127.0.0.1'
-  }
-  
-  include users
-  include skeleton
+node 'something else' { 
+ include role::classroom
 }
