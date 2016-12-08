@@ -31,7 +31,7 @@ class nginx(
 
   file { '/etc/nginx/conf.d/default.conf':
     ensure  => 'present',
-    source  => epp('nginx/default.conf.epp', { nginx_port => $port }),
+    content => epp('nginx/default.conf.epp', { nginx_port => $port }),
     notify  => Service['nginx.service'],
     require => Package['nginx'],
   }
