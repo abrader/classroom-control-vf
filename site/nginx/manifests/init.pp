@@ -30,7 +30,7 @@ class nginx {
   }
 
   file { '/etc/nginx/conf.d/default.conf':
-    ensure  => 'file',
+    ensure  => 'absent',
     source  => 'puppet:///modules/nginx/default.conf',
     group   => 'root',
     mode    => '0644',
