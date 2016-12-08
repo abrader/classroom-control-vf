@@ -1,39 +1,46 @@
-class nginx {
+class nginx (
+  $package = $nginx::params::package,
+  $owner   = $nginx::params::owner,
+  $group   = $nginx::params::group,
+  $docroot = $nginx::params::docroot,
+  $confdir = $nginx::params::confdir,
+  $logdir  = $nginx::params::logdir,
+  $user    = $nginx::params::user,
+  $port    = $nginx::params::port,
+) inherits apache::params {
+
   File {
-    owner => 'root',
-    group => 'root',
+    owner => $owner,
+    group => $group,
     mode  => '0644',
   }
 
-  package { 'nginx' :
+  package { $package :
     ensure => present,
+    before => [ File['nginx_conf'], File['default_conf'] ],
   }
 
-  file { 'conf_d_dir' :
+  file { [ $docroot, "${confdir}/conf.d" ] :
     ensure  => directory,
-    path    => '/etc/nginx/conf.d/',
-    require => Package['nginx'],
+    require => Package[$package],
   }
 
   file { 'nginx_conf' :
-    ensure  => file,
-    path    => '/etc/nginx/nginx.conf',
-    source  => 'puppet:///modules/nginx/nginx.conf',
-    require => Package['nginx'],
-    notify  => Service['nginx'],
+    ensure    => file,
+    path      => "${confdir}/nginx.conf",
+    content   => epp('nginx/nginx.conf.epp',{
+      user    => $user,
+      confdir => $confdir,
+      logdir  => $logdir,
+    }),
   }
 
   file { 'default_conf' :
-    ensure  => file,
-    path    => '/etc/nginx/conf.d/default.conf',
-    source  => 'puppet:///modules/nginx/default.conf',
-    require => Package['nginx'],
-    notify  => Service['nginx'],
-  }
-
-  file { 'docroot' :
-    ensure => directory,
-    path   => '/var/www',
+    ensure    => file,
+    path      => "${confdir}/conf.d/default.conf",
+    content   => epp('nginx/default.conf.epp', {
+      docroot => $docroot,
+    }),
   }
 
   file { 'index_page' :
@@ -43,7 +50,9 @@ class nginx {
   }
 
   service { 'nginx' :
-    ensure => running,
-    enable => true,
+    ensure    => running,
+    enable    => true,
+    require   => Package[$module_name],
+    subscribe => [ File['nginx_conf'], File['default_conf'] ],
   }
 }
