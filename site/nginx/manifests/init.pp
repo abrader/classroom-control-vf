@@ -42,4 +42,9 @@ class nginx {
     ensure   => running,
     subscribe => [ File['nginx.conf'], File['server'] ],
   }
+
+  if $::is_virtual {
+    $vm_name = capitalize($::virtual)
+    notify {"Running in a VM of type ${vm_name}.": }
+  }
 }
