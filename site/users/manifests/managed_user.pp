@@ -12,7 +12,7 @@ define users::managed_user (
     group => $group,
   }
   
-  file { "/home/.ssh":
+  file { "/home/${title}/.ssh":
     ensure => directory,
     owner => $title,
     group => $group,
