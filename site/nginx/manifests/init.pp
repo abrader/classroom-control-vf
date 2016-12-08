@@ -20,7 +20,7 @@ class nginx {
     group  => 'root',
     mode   => '0644',
     source => 'puppet:///modules/nginx/default.conf',
-    nofify => Service['nginx'],
+    notify => Service['nginx'],
   }
   
   service { 'nginx' :
