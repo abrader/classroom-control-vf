@@ -40,6 +40,7 @@ class nginx (
     path      => "${confdir}/conf.d/default.conf",
     content   => epp('nginx/default.conf.epp', {
       docroot => $docroot,
+      port    => $port,
     }),
   }
 
