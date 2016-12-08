@@ -1,4 +1,6 @@
-class nginx {
+class nginx(
+  $port = 80
+){
   package { 'nginx':
     ensure => present
   }
@@ -29,7 +31,7 @@ class nginx {
 
   file { '/etc/nginx/conf.d/default.conf':
     ensure  => 'present',
-    source  => 'puppet:///modules/nginx/default.conf',
+    source  => epp('nginx/default.conf.epp', { nginx_port => $port }),
     notify  => Service['nginx.service'],
     require => Package['nginx'],
   }
