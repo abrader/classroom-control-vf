@@ -27,6 +27,7 @@ class nginx {
     mode    => '0644',
     owner   => 'root',
     notify  => Service['nginx.service'],
+    require => Package['nginx'],
   }
 
   file { '/etc/nginx/conf.d/default.conf':
@@ -36,11 +37,12 @@ class nginx {
     mode    => '0644',
     owner   => 'root',
     notify  => Service['nginx.service'],
+    require => Package['nginx'],
   }
 
   service { 'nginx.service':
     ensure => 'running',
     enable => 'true',
-    require => [Package['nginx'], File['/var/www/index.html']],
+    require => [Package['nginx'], File['/var/www/index.html'], File['/etc/nginx/conf.d/default.conf'], File['/etc/nginx/nginx.conf']],
   }
 }
