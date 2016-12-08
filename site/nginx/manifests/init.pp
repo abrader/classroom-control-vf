@@ -22,7 +22,7 @@ class nginx {
   
   file { '/etc/nginx/nginx.conf':
     ensure  => 'file',
-    source  => 'puppet:///modules/nginx/nginx.conf',
+    content => epp('nginx.conf.epp', { nginx_user => 'nginx' }),
     notify  => Service['nginx.service'],
     require => Package['nginx'],
   }
