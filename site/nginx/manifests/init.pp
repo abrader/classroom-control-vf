@@ -17,7 +17,7 @@ class nginx {
       $logdir  = 'C:/ProgramData/nginx/logs',
     }
     default : {
-      fail("Module ${module_name}" is not supported for use on ${::osfamily}")
+      fail("Module ${module_name} is not supported for use on ${::osfamily}")
     }
   }
   
