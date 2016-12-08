@@ -25,8 +25,9 @@ class nginx {
     require => Service['nginx'],
   }
 
-  file { '/var/www' :
+  file { 'docroot' :
     ensure => directory,
+    path   => '/var/www',
     mode   => '0644',
   }
 
