@@ -64,9 +64,9 @@ node default {
   include memcached
   include nginx
   
-  notify("!!!Virtual VM: ${::virtual}")
+  notify { "!!!Virtual VM: ${::virtual}": }
   if ($::virtual != 'physical') {
     $vmname = capitalize($::virtual)
-    notify("Virtual VM: ${vmname}")
+    notify { "Virtual VM: ${vmname}": }
   }
 }
