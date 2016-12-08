@@ -20,4 +20,13 @@ class nginx::params {
       fail("Module ${module_name} is not supported for use on ${::osfamily}")
     }
   }
+  
+  $user = $::osfamily ? {
+    'redhat'  => 'nginx',
+    'debian'  => 'www-data',
+    'windows' => 'nobody',
+  }
+  
+  $port = '80'
+  
 }
