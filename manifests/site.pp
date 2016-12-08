@@ -52,6 +52,10 @@ node default {
     provider => gem,
   }
 
+  if $facts['is_virtual'] {
+    notify => 'This is a VM, lol',
+  }
+
   exec { 'generate /etc/motd' :
     command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
     creates => '/etc/motd',
