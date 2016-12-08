@@ -38,20 +38,12 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
-node 'zpenka.puppetlabs.vm' {
+node default {
   if $::virtual != 'physical' {
     $vmname = capitalize($::virtual)
     notify { "This is a virtual $vmname instance" : }
   }
 
-  include role::classroom
-  include skeleton
-}
-
-node default {
-  # This is where you can declare classes for all nodes.
-  # Example:
-  #   class { 'my_class': }
   package { 'cowsay' :
     ensure   => true,
     provider => gem,
@@ -64,4 +56,5 @@ node default {
   }
 
   include role::classroom
+  include skeleton
 }
