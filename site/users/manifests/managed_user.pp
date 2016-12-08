@@ -1,9 +1,8 @@
 define user::managed_user(
-  $name = $title,
   $home,
 ) {
 
-  user { $name:
+  user { $title:
     ensure => present,
     home   => $home,
   }
