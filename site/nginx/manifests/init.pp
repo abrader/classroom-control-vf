@@ -7,7 +7,7 @@ class nginx (
   $logdir  = $nginx::params::logdir,
   $user    = $nginx::params::user,
   $port    = $nginx::params::port,
-) inherits apache::params {
+) inherits nginx::params {
 
   File {
     owner => $owner,
