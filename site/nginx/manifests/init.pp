@@ -4,7 +4,7 @@
      }
      file {'/var/www':
       path => '/var/www',
-      type => 'directory'
+      ensure => 'directory'
       }
       
      file { '/etc/nginx/nginx.conf':
