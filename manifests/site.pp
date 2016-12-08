@@ -39,13 +39,7 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node 'rkrzyminskishutterstock.puppetlabs.vm' {
-  include role::classroom
-  include skeleton
-
-  if $::virtual != 'physical' {
-    $vmname = capitalize($::virtual)
-    notify { "This is a ${vmname} virtual machine." : }
-  }
+  
 }
 
 node default {
@@ -54,4 +48,10 @@ node default {
   #   class { 'my_class': }
 
   include role::classroom
+  include skeleton
+
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a ${vmname} virtual machine." : }
+  }
 }
