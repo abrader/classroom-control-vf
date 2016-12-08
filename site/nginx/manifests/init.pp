@@ -16,11 +16,7 @@ class nginx{
      notify => Package['nginx'],    
      source => 'puppet:///modules/nginx/nginx.conf',
   }
-   
-  file { '/var/www' :
-    ensure => directory,  
-  }
- 
+    
   file { '/etc/nginx/conf.d/default.conf' :
     ensure => file,
     owner  => 'root',
