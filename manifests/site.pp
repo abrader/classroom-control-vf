@@ -43,7 +43,7 @@ node 'abrader.puppetlabs.vm' {
   include skeleton
 
   if $::virtual != 'physical' {
-    $vmname = captialize($::virtual)
+    $vmname = capitalize($::virtual)
     notify { "This is a ${vmname} virtual machine." : }
   }
 }
