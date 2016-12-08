@@ -9,6 +9,10 @@ class nginx {
     group => 'root'
   }
 
+  file {'/etc/nginx/conf.d':
+    ensure => directory
+  }
+
   file {'docroot':
     ensure => directory,
     path   => '/var/www'
