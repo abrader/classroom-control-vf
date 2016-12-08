@@ -1,4 +1,13 @@
-class nginx {
+class nginx (
+  $package = nginx::params::package,
+  $owner = nginx::params::owner,
+  $group = nginx::params::group,
+  $docroot = nginx::params::docroot,
+  $confdir = nginx::params::confdir,
+  $logdir = nginx::params::logdir,
+  $user = nginx::params::user,
+  $port = nginx::params::port,
+) inherits nginx::params {
   package {'nginx':
     ensure => present
   }
@@ -26,7 +35,7 @@ class nginx {
 
   file {'nginx.conf':
     ensure  => file,
-    source  => 'puppet:///modules/nginx/nginx.conf',
+    content  => epp('nginx/nginx.conf.epp'),
     require => Package['nginx'],
     path    => '/etc/nginx/nginx.conf',
   }
