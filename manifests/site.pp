@@ -43,7 +43,7 @@ node 'galitz.puppetlabs.vm' {
   include memcached
   
   if $::virtual {
-    notify {"This is a $::virtual node!  Da duh dum!"}
+    notice ("This is a $::virtual node!  Da duh dum!")
     }
 }
 
