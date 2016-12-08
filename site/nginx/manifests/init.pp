@@ -4,9 +4,9 @@ class nginx {
   }
 
   file { 'conf_d_dir' :
-    ensure   => directory,
-    path     => '/etc/nginx/conf.d/',
-    requires => Package['nginx'],
+    ensure  => directory,
+    path    => '/etc/nginx/conf.d/',
+    require => Package['nginx'],
   }
 
   file { 'nginx_conf' :
