@@ -39,6 +39,11 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node 'zpenka.puppetlabs.vm' {
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a virtual $vmname instance" : }
+  }
+
   include role::classroom
   include skeleton
 }
@@ -50,11 +55,6 @@ node default {
   package { 'cowsay' :
     ensure   => true,
     provider => gem,
-  }
-
-  if $::virtual != 'physical' {
-    $vmname = capitalize($::virtual)
-    notify { "This is a virtual $vmname instance" : }
   }
 
   exec { 'generate /etc/motd' :
