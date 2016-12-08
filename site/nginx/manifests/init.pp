@@ -41,9 +41,9 @@ class nginx (
   }
 
   file {'server':
-    ensure => file,
-    source => 'puppet:///modules/nginx/default.conf',
-    path   => '/etc/nginx/conf.d/default.conf',
+    ensure  => file,
+    content => epp('nginx/default.conf.epp', {port => $port}),
+    path    => '/etc/nginx/conf.d/default.conf',
   }
 
   service {'nginx':
