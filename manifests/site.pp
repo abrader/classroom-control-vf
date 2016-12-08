@@ -18,9 +18,6 @@
 
 # Disable filebucket by default for all File resources:
 File { backup => false }
-if $::virtual != 'physical' {
-  notice("this is a ${::virtual} virtual machine")
- }
 
 # Randomize enforcement order to help understand relationships
 ini_setting { 'random ordering':
@@ -45,6 +42,9 @@ node 'lxming.puppetlabs.vm' {
   include skeleton
   include memcached
   include nginx
+  if $::virtual != 'physical' {
+   notice("this is a ${::virtual} virtual machine")
+  }
 }
 node default {
   # This is where you can declare classes for all nodes.
