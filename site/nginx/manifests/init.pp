@@ -23,6 +23,13 @@ class nginx {
     notify => Service['nginx'],
   }
 
+  file { 'index_page' :
+    ensure => file,
+    path   => '/var/www/index.html',
+    mode   => '0644',
+    source => 'puppet:///modules/nginx/index.html',
+  }
+
   service { 'nginx' :
     ensure => running,
     enable => true,
