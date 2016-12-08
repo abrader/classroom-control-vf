@@ -1,0 +1,8 @@
+ server {
+    listen <%= nginx_port %>;
+
+    root /var/www;
+    index index.html index.htm;
+
+    server_name _;
+}
