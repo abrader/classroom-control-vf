@@ -22,7 +22,7 @@ class nginx {
   
   file { '/etc/nginx/nginx.conf':
     ensure  => 'file',
-    content => epp('nginx.conf.epp', { nginx_user => 'nginx' }),
+    content => epp('nginx/nginx.conf.epp', { nginx_user => 'nginx' }),
     notify  => Service['nginx.service'],
     require => Package['nginx'],
   }
