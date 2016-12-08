@@ -26,7 +26,7 @@ class nginx {
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-    notify  => Service['memcached.service'],
+    notify  => Service['nginx.service'],
   }
 
   file { '/etc/nginx/conf.d/default.conf':
@@ -35,7 +35,7 @@ class nginx {
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-    notify  => Service['memcached.service'],
+    notify  => Service['nginx.service'],
   }
 
   service { 'nginx.service':
