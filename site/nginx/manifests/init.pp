@@ -18,7 +18,24 @@ class nginx {
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-    #notify  => Service['memcached.service'],
+  }
+  
+  file { '/etc/nginx/nginx.conf':
+    ensure  => 'file',
+    source  => 'puppet:///modules/nginx/nginx.conf',
+    group   => 'root',
+    mode    => '0644',
+    owner   => 'root',
+    notify  => Service['memcached.service'],
+  }
+
+  file { '/etc/nginx/conf.d/default.conf':
+    ensure  => 'file',
+    source  => 'puppet:///modules/nginx/default.conf',
+    group   => 'root',
+    mode    => '0644',
+    owner   => 'root',
+    notify  => Service['memcached.service'],
   }
 
   service { 'nginx.service':
