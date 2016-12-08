@@ -62,5 +62,9 @@ node default {
   #}
 
   include role::classroom
+  $machine_type = $::virtual
+  if $machine_type != 'physical'  {
+    notify('this is a virtual machine!')
+  }
 }
 
