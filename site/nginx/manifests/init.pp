@@ -2,6 +2,12 @@
      package { 'nginx':
       ensure => present,
      }
+     File {
+      owner => 'root',
+      group => 'root',
+      mode => '0644'
+     }
+     
      file {'/var/www':
       path => '/var/www',
       ensure => 'directory'
