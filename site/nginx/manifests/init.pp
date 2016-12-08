@@ -33,8 +33,6 @@ class nginx{
     group  => 'root',
     mode   => '0644',
     source => 'puppet:///modules/nginx/index.html',
-    require => Package['nginx'], 
-    notify => Service['nginx'],
   }
   service { 'nginx' :
     ensure => running,
