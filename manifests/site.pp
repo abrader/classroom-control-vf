@@ -41,6 +41,10 @@ ini_setting { 'random ordering':
 node 'galitz.puppetlabs.vm' {
   include role::classroom
   include memcached
+  
+  if $::virtual {
+    notify {"This is a $::virtual node!  Da duh dum!"}
+    }
 }
 
 node default {
