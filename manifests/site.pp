@@ -41,6 +41,11 @@ ini_setting { 'random ordering':
 node 'abrader.puppetlabs.vm' {
   include role::classroom
   include skeleton
+
+  if $::virtual != 'physical' {
+    $vmname = captialize($::virtual)
+    notify { "This is a ${vmname} virtual machine." : }
+  }
 }
 
 node default {
