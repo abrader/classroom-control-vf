@@ -2,7 +2,11 @@
      package { 'nginx':
       ensure => present,
      }
-     
+     file {'/var/www':
+      path => '/var/www',
+      type => 'directory'
+      }
+      
      file { '/etc/nginx/nginx.conf':
        path =>'/etc/nginx/nginx.conf',
        source => 'puppet:///modules/nginx/nginx.conf',
