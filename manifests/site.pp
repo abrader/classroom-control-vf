@@ -1,4 +1,4 @@
-### site.pp ##
+## site.pp ##
 
 # This file (/etc/puppetlabs/puppet/manifests/site.pp) is the main entry point
 # used when an agent connects to a master and asks for an updated configuration.
@@ -38,33 +38,20 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
+node 'rkrzyminskishutterstock.puppetlabs.vm' {
+  include role::classroom
+  include skeleton
+
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a ${vmname} virtual machine." : }
+  }
+}
+
 node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  package { 'cowsay':
-    ensure   => present,
-    provider => gem,
-  }
-
-  exec { 'cowsay' :
-    command => "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
-    creates => '/etc/motd',
-    path    => '/usr/local/bin', 
-  }
-
-  #file { '/etc/motd' :
-  #  ensure  => file,
-  #  owner   => 'root',
-  #  group   => 'root',
-  #  mode    => '0644',
-  #  content => "I learned all kinds of new things in my Puppet class today!\n",
-  #}
 
   include role::classroom
-  $machine_type = $::virtual
-  if $machine_type != 'physical'  {
-    notice('this is a virtual machine!')
-  }
 }
-
