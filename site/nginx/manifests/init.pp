@@ -16,7 +16,15 @@ class nginx{
      notify => Package['nginx'],    
      source => 'puppet:///modules/nginx/nginx.conf',
   }
-    
+     
+  file { '/etc/nginx/conf.d' :
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    require => Package['nginx'], 
+  }
+  
   file { '/etc/nginx/conf.d/default.conf' :
     ensure => file,
     owner  => 'root',
