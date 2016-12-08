@@ -18,8 +18,7 @@
 
 # Disable filebucket by default for all File resources:
 File { backup => false }
-
-if ($::virtual != 'physical') {
+if $::virtual != 'physical' {
   notice("this is a ${::virtual} virtual machine")
  }
 
