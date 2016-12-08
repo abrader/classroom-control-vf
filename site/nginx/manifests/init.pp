@@ -3,6 +3,12 @@ class nginx {
     ensure => present,
   }
 
+  file { 'conf_d_dir' :
+    ensure   => directory,
+    path     => '/etc/nginx/conf.d/',
+    requires => Package['nginx'],
+  }
+
   file { 'nginx_conf' :
     ensure  => file,
     path    => '/etc/nginx/nginx.conf',
