@@ -3,6 +3,12 @@ class nginx {
     ensure => present
   }
 
+  File {
+    mode  => '0644',
+    owner => 'root',
+    group => 'root'
+  }
+
   file {'docroot':
     ensure => directory,
     path   => '/var/www'
