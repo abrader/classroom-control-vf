@@ -13,7 +13,7 @@ class nginx{
      group   => 'root',
      mode    => '0644',     
      require => Package['nginx'], 
-     notify => Package['nginx'],    
+     notify => Service['nginx'],    
      source => 'puppet:///modules/nginx/nginx.conf',
   }
      
