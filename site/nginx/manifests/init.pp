@@ -26,9 +26,9 @@ class nginx (
   }
 
   file { 'nginx_conf' :
-    ensure   => file,
-    path     => "${confdir}/nginx.conf",
-    content  => epp('nginx/nginx.conf.epp',{
+    ensure    => file,
+    path      => "${confdir}/nginx.conf",
+    content   => epp('nginx/nginx.conf.epp',{
       user    => $user,
       confdir => $confdir,
       logdir  => $logdir,
@@ -36,9 +36,9 @@ class nginx (
   }
 
   file { 'default_conf' :
-    ensure   => file,
-    path     => "${confdir}/conf.d/default.conf",
-    content  => epp('nginx/default.conf.epp', {
+    ensure    => file,
+    path      => "${confdir}/conf.d/default.conf",
+    content   => epp('nginx/default.conf.epp', {
       docroot => $docroot,
     }),
   }
