@@ -4,23 +4,30 @@ class nginx {
   }
 
   file { 'nginx_conf' :
-    ensure => file,
-    path   => '/etc/nginx/nginx.conf',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
-    source => 'puppet:///modules/nginx/nginx.conf',
-    notify => Service['nginx'],
+    ensure  => file,
+    path    => '/etc/nginx/nginx.conf',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    source  => 'puppet:///modules/nginx/nginx.conf',
+    notify  => Service['nginx'],
+    require => Service['nginx'],
   }
 
   file { 'default_conf' :
-    ensure => file,
-    path   => '/etc/nginx/conf.d/default.conf',
-    owner  => 'root',
-    group  => 'root',
+    ensure  => file,
+    path    => '/etc/nginx/conf.d/default.conf',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    source  => 'puppet:///modules/nginx/default.conf',
+    notify  => Service['nginx'],
+    require => Service['nginx'],
+  }
+
+  file { '/var/www' :
+    ensure => directory,
     mode   => '0644',
-    source => 'puppet:///modules/nginx/default.conf',
-    notify => Service['nginx'],
   }
 
   file { 'index_page' :
