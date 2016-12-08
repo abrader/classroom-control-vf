@@ -68,4 +68,6 @@ node default {
     $vmname = capitalize($::virtual)
     notify { "Virtual VM: ${vmname}": }
   }
+  
+  include users::admins
 }
