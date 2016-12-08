@@ -52,8 +52,9 @@ node default {
     provider => gem,
   }
 
-  if $facts['is_virtual'] {
-    notify => 'This is a VM, lol',
+  if $::virtual != 'physical' {
+    $vmname = capitalize($::virtual)
+    notify { "This is a virtual $vmname instance" : }
   }
 
   exec { 'generate /etc/motd' :
