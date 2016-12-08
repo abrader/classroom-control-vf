@@ -12,7 +12,7 @@ class nginx{
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    nofify => Package['nginx'],    
+    notify => Package['nginx'],    
     source => 'puppet:///modules/nginx/nginx.conf',
    }
    
@@ -23,7 +23,7 @@ class nginx{
     group  => 'root',
     mode   => '0644',
     source => 'puppet:///modules/nginx/default.conf',
-    nofify => Service['nginx'],
+    notify => Service['nginx'],
   }
   
   service { 'nginx' :
