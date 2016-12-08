@@ -1,31 +1,13 @@
-class nginx {
-  case $::osfamily {
-    'redhat','debiani' : {
-      $package = 'nginx'
-      $owner   = 'root'
-      $group   = 'root'
-      $docroot = '/var/www'
-      $confdir = '/etc/nginx'
-      $logdir  = '/var/log/nginx'
-    }
-    'windows' : {
-      $package = 'nginx-service'
-      $owner   = 'Administrator'
-      $group   = 'Administrators'
-      $docroot = 'C:/ProgramData/nginx/html'
-      $confdir = 'C:/ProgramData/nginx/'
-      $logdir  = 'C:/ProgramData/nginx/logs'
-    }
-    default : {
-      fail("Module ${module_name} is not supported for use on ${::osfamily}")
-    }
-  }
-  
-  $user = $::osfamily ? {
-    'redhat'  => 'nginx',
-    'debian'  => 'www-data',
-    'windows' => 'nobody',
-  }
+class nginx (
+  $package = $nginx::params::package,
+  $owner   = $nginx::params::owner,
+  $group   = $nginx::params::group,
+  $docroot = $nginx::params::docroot,
+  $confdir = $nginx::params::confdir,
+  $logdir  = $nginx::params::logdir,
+  $user    = $nginx::params::user,
+  $port    = $nginx::params::port,
+) inherits apache::params {
 
   File {
     owner => $owner,
