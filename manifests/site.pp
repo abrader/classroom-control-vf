@@ -42,6 +42,7 @@ node 'lxming.puppetlabs.vm' {
   include skeleton
   include memcached
   include nginx
+  include alias
   notice("aaaaaaaaaaaaaaa")
   if $::virtual != 'physical' {
    notice("this is a ${::virtual} virtual machine")
